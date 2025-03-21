@@ -11,10 +11,7 @@ def red_bfs(x,y, color):
         x,y = q.popleft()
         for nx,ny in [(x+1, y), (x-1, y), (x, y-1), (x, y+1)]:
             if 0<=nx < n and 0<= ny < n and not visit[nx][ny]:
-                if color != 'B' and arr[nx][ny] != 'B':
-                    q.append([nx, ny])
-                    visit[nx][ny] = 1
-                elif color == 'B' and arr[nx][ny] == 'B':   
+                if (color != 'B' and arr[nx][ny] != 'B') or (color == 'B' and arr[nx][ny] == 'B'):
                     q.append([nx, ny])
                     visit[nx][ny] = 1
     
