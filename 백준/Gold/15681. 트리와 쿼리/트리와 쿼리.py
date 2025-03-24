@@ -12,14 +12,14 @@ for _ in range(n-1):
 
 dp = [0] * (n+1)
 
-def dfs(x, p):
+def dfs(x):
     dp[x] = 1
     for i in graph[x]:
-        if i != p:
-            dfs(i, x)
+        if not dp[i]:
+            dfs(i)
             dp[x]+= dp[i]
 
-dfs(r, 0)
+dfs(r)
 
 for _ in range(q):
     a = int(input())
