@@ -20,10 +20,10 @@ dp = [[0,1] for _ in range(n+1)]
 def dfs(x):
     visit[x] = 1
     for next in graph[x]:
-        if visit[next]: continue
-        dfs(next)
-        dp[x][0]+= dp[next][1]
-        dp[x][1]+= min(dp[next])
+        if not visit[next]:
+            dfs(next)
+            dp[x][0]+= dp[next][1]
+            dp[x][1]+= min(dp[next])
 
 dfs(1)
 print(min(dp[1]))
