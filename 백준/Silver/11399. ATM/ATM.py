@@ -1,13 +1,7 @@
-import sys
-input = sys.stdin.readline
-moi = lambda: map(int, input().split())
-n = int(input())
-
-arr = list(moi())
+n  = int(input())
+arr = list(map(int, input().split()))
 arr.sort()
-dp = [0] * (n)
-dp[0] = arr[0]
-for i in range(1, n):
-    dp[i] = dp[i-1] + arr[i]
-
-print(sum(dp))
+res = 0
+for i in range(n):
+    res += sum(arr[:i+1])
+print(res)
