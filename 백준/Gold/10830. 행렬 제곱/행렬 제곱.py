@@ -1,32 +1,27 @@
-import sys
-input = sys.stdin.readline
 moi = lambda: map(int, input().split())
-n,a = moi()
+
+n,m = moi()
+
 arr = [list(moi()) for _ in range(n)]
 
-
-def multi_arr(a,b):
-    x = [[0] * n for _ in range(n)]
+def multi(x,y):
+    dp = [[0] * n for _ in range(n)]
     for i in range(n):
         for j in range(n):
             for k in range(n):
-                x[i][j] += (a[i][k] * b[k][j] % 1000)
-    return x
+                dp[i][k]+= (x[i][j] * y[j][k] % 1000)
+    return dp
 
 def square(x, n):
-    if n == 1:
-        return x
-    temp = square(x, n//2)
-    if n % 2:
-        return multi_arr(multi_arr(temp, temp) , x)
-    else:
-        return multi_arr(temp, temp)
-    
-result = square(arr, a)
+    if n == 1: return x
+    tmp = square(x, n//2)
+    if n % 2 == 0: return multi(tmp, tmp)
+    else: return multi(multi(tmp, tmp), x)
+
+res = square(arr, m)
 
 for i in range(n):
     for j in range(n):
-        result[i][j] %=1000
-
-for r in result:
+        res[i][j] %= 1000
+for r in res:
     print(*r)
