@@ -3,18 +3,11 @@ input = sys.stdin.readline
 n = int(input())
 arr = list(map(int, input().split()))
 dp = []
-
-if arr[0] > arr[1]:
-    dp.append(1)
-else:
-    dp.append(0)
-
-for i in range(1, n-1):
-    if arr[i] <= arr[i+1]:
+for i in range(1, n):
+    if arr[i-1] <= arr[i]:
         dp.append(0)
     else:
         dp.append(1)
-
 res = []
 for i in range(len(dp)):
     if dp[i] == 1:
