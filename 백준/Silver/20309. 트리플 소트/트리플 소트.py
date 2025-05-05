@@ -1,10 +1,10 @@
+import sys
+input = sys.stdin.readline
 n = int(input())
 arr = list(map(int, input().split()))
-arr2  = arr[::]
-arr2.sort()
 chekc = True
 for i in range(n):
-    if abs(i - arr2.index(arr[i])) % 2:
+    if i%2 and arr[i] % 2: #배열을 보면 홀수인 경우에 arr의 값이 짝수여야 한다
         chekc = False
         break
 if chekc:
