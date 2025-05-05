@@ -11,6 +11,5 @@ for i in range(n):
     dic[dp[i]].append(i)
 res = 0
 for i in range(7):
-    if dic[i]:
-        res = max(res, dic[i][-1] - dic[i][0])
+    if dic[i]:res = max(res, dic[i][-1] - dic[i][0]) # 나머지가 같은 경우가 정답
 print(res)
