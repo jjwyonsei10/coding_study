@@ -1,4 +1,3 @@
-from collections import deque
 n  = int(input())
 arr = [list(map(int, input().split())) for _ in range(n)]
 visit = [0] * n
